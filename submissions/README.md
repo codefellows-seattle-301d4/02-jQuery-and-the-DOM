@@ -1,4 +1,5 @@
-## Submission Instructions
-- Copy your original starter code folder into this directory, renaming it to your-name-partner-name (ex: brian-rick).
+# Static MVC Blog
 
+This is a simple blogging system front end. The code is organized with MVC principles in mind.
 
+It starts small, but will be gaining new features regularly. 
