@@ -13,8 +13,13 @@ function Article (opts) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-
   $newArticle.attr('data-category', this.category);
+
+  $newArticle.find('h1').html(this.title);
+  $newArticle.find('a[href]').html(this.authorUrl);
+  $newArticle.find('a').html(this.author);
+  $newArticle.find('time[pubdate]').html(this.publishedOn);
+  $newArticle.find('.article-body').html(this.body);
 
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
@@ -31,9 +36,10 @@ Article.prototype.toHtml = function() {
   $newArticle.append('<hr>');
 
   // TODO: This cloned article is no longer a template, so we should remove that class...
-
+  $('article.template').removeClass('template');
   return $newArticle;
 };
+
 
 // Sort our data by date published, descending order
 ourLocalData.sort(function(a,b) {
