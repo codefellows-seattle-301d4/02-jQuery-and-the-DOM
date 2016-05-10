@@ -3,7 +3,12 @@ var articles = [];
 function Article (opts) {
   // TODO: Use the js object passed in to complete this contructor function:
   // Save ALL the properties of `opts` into `this`.
+  this.title = opts.title;
+  this.category = opts.category;
   this.author = opts.author;
+  this.authorUrl = opts.authorUrl;
+  this.publishedOn = opts.publishedOn;
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
@@ -15,7 +20,10 @@ Article.prototype.toHtml = function() {
   // from this particular Article instance. We need to fill in:
   // the author name and url, the article title and body, and the
   // publication date.
-
+  $('.template h1').text(this.title);
+  $('.template a').replaceWith('<a href=\"' + this.authorUrl + '\">' + this.author + '</a>');
+  $('.template .article-body').append('<p>' + this.body + '</p>');
+  $('.template time').text(this.publishedOn);
   // This is a separate inclusion of the publication date as a 'title' attribute
   // to show on hover:
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
