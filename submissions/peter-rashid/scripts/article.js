@@ -15,7 +15,8 @@ Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
 
   $newArticle.attr('data-category', this.category);
-
+  $newArticle.attr('address[a]', this.authorUrl );
+  $newArticle.text('address', this.author);
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
   // the author name and url, the article title and body, and the
