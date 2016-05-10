@@ -3,14 +3,18 @@ var articles = [];
 function Article (opts) {
   // TODO: Use the js object passed in to complete this contructor function:
   // Save ALL the properties of `opts` into `this`.
+  this.title = opts.title;
+  this.category = opts.category;
   this.author = opts.author;
+  this.authorUrl = opts.authorUrl;
+  this.publishedOn = opts.publishedOn;
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
 
   $newArticle.attr('data-category', this.category);
-
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
   // the author name and url, the article title and body, and the
@@ -18,6 +22,11 @@ Article.prototype.toHtml = function() {
 
   // This is a separate inclusion of the publication date as a 'title' attribute
   // to show on hover:
+  $newArticle.find('h1').html(this.title);
+  $newArticle.find('address > a').text(this.author);
+  $newArticle.find('address > a').attr('href', this.authorUrl);
+  $newArticle.find('.article-body').html(this.body);
+
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
 
   // Display the date as a relative number of "days ago":
@@ -26,7 +35,7 @@ Article.prototype.toHtml = function() {
   $newArticle.append('<hr>');
 
   // TODO: This cloned article is no longer a template, so we should remove that class...
-
+  $newArticle.removeClass('template');
   return $newArticle;
 };
 
