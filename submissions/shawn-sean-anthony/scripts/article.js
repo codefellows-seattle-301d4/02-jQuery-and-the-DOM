@@ -15,12 +15,13 @@ Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
 
 
-  $newArticle.attr('data-title', this.title);
-  $newArticle.attr('data-category', this.category);
-  $newArticle.attr('data-author', this.author);
-  $newArticle.attr('data-authorUrl',this.authorUrl);
-  $newArticle.attr('time[datetime]', this.publishedOn);
-  $newArticle.attr('data-body', this.body);
+  $newArticle.find('article.template').attr('data-category', this.category);
+  $newArticle.find('h1').text(this.title);
+  $newArticle.find('address a').attr('href', this.authorUrl);
+  $newArticle.find('address a').text(this.author);
+  $newArticle.find('time[pubdate]').attr('datetime',this.publishedOn);
+  $newArticle.find('.article-body').html(this.body);
+
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
   // the author name and url, the article title and body, and the
@@ -36,6 +37,7 @@ Article.prototype.toHtml = function() {
   $newArticle.append('<hr>');
 
   // TODO: This cloned article is no longer a template, so we should remove that class...
+  $newArticle.removeClass('template');
 
   return $newArticle;
 };
