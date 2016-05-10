@@ -19,7 +19,7 @@ Article.prototype.toHtml = function() {
   $('#article-title').text(this.title);
   $('#article-author').text(this.author);
   $('#article-authorUrl').attr('href', this.authorUrl);
-  $('.article-body').html(this.body);
+  $('#article-body').html(this.body);
   $('<time>').text(this.publishedOn);
 
   // TODO: Use jQuery to fill in the template with properties
