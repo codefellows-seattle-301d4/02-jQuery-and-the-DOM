@@ -18,7 +18,7 @@ Article.prototype.toHtml = function() {
   $newArticle.attr('href', this.authorUrl);
   $newArticle.find('a').text(this.author);
   $newArticle.find('.article-body').html(this.body);
-
+  $newArticle.find('header h1').text(this.title);
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
   // the author name and url, the article title and body, and the
